@@ -17,7 +17,7 @@ Areas referenced by pointers *must not* overlap each other or the File Header.
 | index_count | u32 |
 | indices_offset | [u32; index_count] |
 
-Everything else in this specification is subject to change, except for:
+Everything in this specification is subject to change, except for:
 * The value of `magic_number`
 * The position and size of `version`
 
