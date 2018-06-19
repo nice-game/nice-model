@@ -2,7 +2,7 @@
 
 All pointers represent offsets relative to the beginning of the file, and *must not* be 0, unless they are marked with (opt).
 
-Areas referenced by pointers *must not* overlap with each other or the File Header.
+Areas referenced by pointers *must not* overlap each other or the File Header.
 
 ## File Header
 
@@ -14,6 +14,8 @@ Areas referenced by pointers *must not* overlap with each other or the File Head
 | positions_offset | *[Position; vertex_count] |
 | normals_offset | (opt) *[Normal; vertex_count] |
 | texcoords_offset | (opt) *[TexCoord; vertex_count] |
+| index_count | u32 |
+| indices_offset | [u32; index_count] |
 
 Everything else in this specification is subject to change, except for:
 * The value of `magic_number`
