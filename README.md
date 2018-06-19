@@ -15,7 +15,7 @@ Areas referenced by pointers *must not* overlap each other or the File Header.
 | normals_offset | (opt) *[Normal; vertex_count] |
 | texcoords_offset | (opt) *[TexCoord; vertex_count] |
 | index_count | u32 |
-| indices_offset | [u32; index_count] |
+| indices_offset | *[u32; index_count] |
 
 Everything in this specification is subject to change, except for:
 * The value of `magic_number`
