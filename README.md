@@ -11,7 +11,7 @@ Areas referenced by pointers *must not* overlap each other or the File Header.
 | Name | Data | Value |
 | - | - | - |
 | magic_number | [u8; 4] | b"nmdl" |
-| version | Version |
+| version | Version | { major: 0, minor: 0 } |
 | vertex_count | u32 |
 | positions_offset | *[Position; vertex_count] |
 | normals_offset | (opt) *[Normal; vertex_count] |
