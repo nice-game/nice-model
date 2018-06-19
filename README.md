@@ -1,6 +1,8 @@
 # Version 0.0 (WIP)
 
-All pointers represent offsets relative to the beginning of the file, and *must not* be 0, unless they are marked with (opt).
+All pointers represent offsets relative to the beginning of the file.
+
+Pointers *must not* be 0, unless they are marked with (opt), in which case 0 represents a null value.
 
 Areas referenced by pointers *must not* overlap each other or the File Header.
 
