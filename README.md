@@ -71,7 +71,7 @@ Normal values *should* be normalized. That is, `sqrt(normal[0]^2 * normal[1]^2 *
 
 `texture2` is interpreted as a texture where the first 2 channels represent a tangent-space normal encoded as `normal.xy / normal.z`, the 3rd channel represents a "polish" factor, and the 4th channel represents a "metallic" factor. For the sake of performance, this *should* reference a DXT3 file.
 
-`light_penetration` represents the percentage of light that makes it through one unit of material. 0 represents an opaque object, and 255 represents a completely invisible object.
+`light_penetration` represents the percent of light remaining after travelling through one unit of material, as if the object absorbed the rest of the light. 0 represents an opaque object, and 255 represents maximum transparency. Note that even with maximum transparency, an object may just become blurry instead of invisible, as subsurface scattering may still cause some light to be reflected.
 
 `subsurface_scattering` represents how wide of a cone each incoming ray spreads out into per unit distance traveled through the material. 0 represents no scattering, and 255 represents maximum scattering. The units here are arbitrary.
 
