@@ -67,9 +67,9 @@ Normal values *should* be normalized. That is, `sqrt(normal[0]^2 * normal[1]^2 *
 
 `index_count` represents the number of indices this material will be applied to. It is cumulative, so if the first material has a count of 12, and the second material has a count of 9, the second material will be applied to indices 12..21.
 
-`texture1` is interpreted as a texture where the first 3 channels define an RGB color value, and the 4th channel is a flag to enable or disable emissiveness. For the sake of performance, this *should* reference a DXT1 file.
+`texture1` is interpreted as a texture where the first 3 channels define an RGB color value, and the 4th channel is a flag to enable or disable emissiveness. For the sake of performance, this *should* reference a DXT1 file, and all parsers *must* support at least that format, but a parser *may* support additional formats.
 
-`texture2` is interpreted as a texture where the first 2 channels represent a tangent-space normal encoded as `normal.xy / normal.z`, the 3rd channel represents a "polish" factor, and the 4th channel represents a "metallic" factor. For the sake of performance, this *should* reference a DXT3 file.
+`texture2` is interpreted as a texture where the first 2 channels represent a tangent-space normal encoded as `normal.xy / normal.z`, the 3rd channel represents a "polish" factor, and the 4th channel represents a "metallic" factor. For the sake of performance, this *should* reference a DXT3 file, and all parsers *must* support at least that format, but a parser *may* support additional formats.
 
 `light_penetration` represents the percent of light remaining after travelling through one unit of material, as if the object absorbed the rest of the light. 0 represents an opaque object, and 255 represents maximum transparency. Note that even with maximum transparency, an object may just become blurry instead of invisible, as subsurface scattering may still cause some light to be reflected.
 
