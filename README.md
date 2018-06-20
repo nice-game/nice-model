@@ -65,7 +65,7 @@ Normal values *should* be normalized. That is, `sqrt(normal[0]^2 * normal[1]^2 *
 | emissive_brightness | u16 |
 | base_color | [u8; 3] |
 
-`index_count` represents the number of indices this material will be applied to. It is cumulative, so if the first material has an `index_count` of 12, and the second material has an `index_count` of 9, the second material will be applied to indices 12..21.
+`index_count` represents the number of indices this material will be applied to. It is cumulative, so if the first material has a count of 12, and the second material has a count of 9, the second material will be applied to indices 12..21.
 
 `texture1` is interpreted as a texture where the first 3 channels define an RGB color value, and the 4th channel is a flag to enable or disable emissiveness. For the sake of performance, this *should* reference a DXT1 file.
 
