@@ -18,6 +18,8 @@ Areas referenced by pointers *must not* overlap each other or the File Header.
 | texcoords_offset | (opt) *[TexCoord; vertex_count] |
 | index_count | u32 |
 | indices_offset | *[u32; index_count] |
+| material_count | u8 |
+| materials_offset | *[Material; material_count] |
 
 Everything in this specification is subject to change, except for:
 * The value of `magic_number`
@@ -49,3 +51,29 @@ Normal values *should* be normalized. That is, `sqrt(normal[0]^2 * normal[1]^2 *
 
 ## TexCoord
 `[f32; 2]`
+
+## Material
+| Name | Data |
+| - | - |
+| texture_color | (opt) *Path |
+| light_penetration | u8 |
+| subsurface_scattering | u8 |
+| emissive_brightness | u16 |
+| base_color | [u8; 3] |
+
+`light_penetration` represents the percentage of light that makes it through one unit of material. 0 represents an opaque object, and 255 represents a completely invisible object.
+
+`subsurface_scattering` represents how wide of a cone each incoming ray spreads out into per unit distance traveled through the material. 0 represents no scattering, and 255 represents maximum scattering. The units here are arbitrary.
+
+## Path
+`String`
+
+A path *must* be a valid path on any system where the file will be loaded. It *should* be cross-platform compatible, and relative instead of absolute.
+
+## String
+| Name | Data |
+| - | - |
+| length | u16 |
+| bytes | [u8; length] |
+
+`bytes` *must* be UTF-8 encoded, and does not have a null terminator. However, null characters are acceptable and treated as part of the string.
