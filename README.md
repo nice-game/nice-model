@@ -6,6 +6,8 @@ Pointers *must not* be 0, unless they are marked with (opt), in which case 0 rep
 
 Areas referenced by pointers *must not* overlap each other or the File Header.
 
+All structures are tightly packed, so there can be no confusion about alignment.
+
 ## File Header
 
 | Name | Data | Value |
