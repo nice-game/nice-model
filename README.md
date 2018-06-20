@@ -57,11 +57,16 @@ Normal values *should* be normalized. That is, `sqrt(normal[0]^2 * normal[1]^2 *
 ## Material
 | Name | Data |
 | - | - |
-| texture_color | (opt) *Path |
+| texture1 | (opt) *Path |
+| texture2 | (opt) *Path |
 | light_penetration | u8 |
 | subsurface_scattering | u8 |
 | emissive_brightness | u16 |
 | base_color | [u8; 3] |
+
+`texture1` is interpreted as a texture where the first 3 channels define an RGB color value, and the 4th channel is a flag to enable or disable emissiveness. For the sake of performance, this *should* reference a DXT1 file.
+
+`texture2` is interpreted as a texture where the first 2 channels represent a tangent-space normal encoded as `normal.xy / normal.z`, the 3rd channel represents a "polish" factor, and the 4th channel represents a "metallic" factor. For the sake of performance, this *should* reference a DXT3 file.
 
 `light_penetration` represents the percentage of light that makes it through one unit of material. 0 represents an opaque object, and 255 represents a completely invisible object.
 
