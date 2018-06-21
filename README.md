@@ -16,15 +16,15 @@ Parsers *must* support at least BC1 and BC2 textures, and *may* support any addi
 | version | Version | { major: 0, minor: 0 } |
 | vertex_count | u32 |
 | positions_stride | u8 |
-| positions_offset | *[Padded<Position, `positions_stride`>; vertex_count] |
+| positions_offset | *[Padded<Position, positions_stride>; vertex_count] |
 | normals_stride | u8 |
-| normals_offset | (opt) *[Padded<Normal, `normals_stride`>; vertex_count] |
+| normals_offset | (opt) *[Padded<Normal, normals_stride>; vertex_count] |
 | texcoords1_stride | u8 |
-| texcoords1_offset | (opt) *[Padded<TexCoord, `texcoords1_stride`>; vertex_count] |
+| texcoords1_offset | (opt) *[Padded<TexCoord, texcoords1_stride>; vertex_count] |
 | texcoords2_stride | u8 |
-| texcoords2_offset | (opt) *[Padded<TexCoord, `texcoords2_stride`>; vertex_count] |
+| texcoords2_offset | (opt) *[Padded<TexCoord, texcoords2_stride>; vertex_count] |
 | texcoords_lightmap_stride | u8 |
-| texcoords_lightmap_offset | (opt) *[Padded<TexCoord, `texcoords_lightmap_stride`>; vertex_count] |
+| texcoords_lightmap_offset | (opt) *[Padded<TexCoord, texcoords_lightmap_stride>; vertex_count] |
 | index_count | u32 |
 | indices_offset | *[u32; index_count] |
 | material_count | u8 |
