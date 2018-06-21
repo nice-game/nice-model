@@ -28,7 +28,7 @@ Parsers *must* support at least BC1 and BC2 textures, and *may* support any addi
 | index_count | u32 |
 | indices_offset | *[u32; index_count] |
 | material_count | u8 |
-| materials_offset | *[Material; material_count] |
+| materials_offset | (opt) *[Material; material_count] |
 
 Everything in this specification is subject to change, except for:
 * The value of `magic_number`
