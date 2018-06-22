@@ -15,16 +15,11 @@ Parsers *must* support at least BC1 and BC2 textures, and *may* support any addi
 | magic_number | [u8; 4] | b"nmdl" |
 | version | Version | { major: 0, minor: 0 } |
 | vertex_count | u32 |
-| positions_stride | u8 |
-| positions_offset | *[Padded<Position, positions_stride>; vertex_count] |
-| normals_stride | u8 |
-| normals_offset | (opt) *[Padded<Normal, normals_stride>; vertex_count] |
-| texcoords1_stride | u8 |
-| texcoords1_offset | (opt) *[Padded<TexCoord, texcoords1_stride>; vertex_count] |
-| texcoords2_stride | u8 |
-| texcoords2_offset | (opt) *[Padded<TexCoord, texcoords2_stride>; vertex_count] |
-| texcoords_lightmap_stride | u8 |
-| texcoords_lightmap_offset | (opt) *[Padded<TexCoord, texcoords_lightmap_stride>; vertex_count] |
+| positions_offset | *[Position; vertex_count] |
+| normals_offset | (opt) *[Normal; vertex_count] |
+| texcoords1_offset | (opt) *[TexCoord; vertex_count] |
+| texcoords2_offset | (opt) *[TexCoord; vertex_count] |
+| texcoords_lightmap_offset | (opt) *[TexCoord; vertex_count] |
 | index_count | u32 |
 | indices_offset | *[u32; index_count] |
 | material_count | u8 |
@@ -49,12 +44,6 @@ The major number represents changes that require adding a new branch the parser.
 Example 1: If a field is defined as "any u32 except 0", and then the standard is changed to allow 0, only the minor version should be incremented, because the updated parser still be able to parse a file that never uses the value 0.
 
 Opposite of example 1: If a field is defined as "any u32", and then the standard is changed to disallow 0, the major version should be incremented, because the updated parser should fail when the value 0 is used, which causes it to be incompatible with older files. A new branch will need to be created to avoid losing support for the older files.
-
-## Padded<T, Size>
-| Name | Type |
-| - | - |
-| data | T |
-| padding | [u8; max(0, Size - sizeof(T))]
 
 ## Position
 
