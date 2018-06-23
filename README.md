@@ -1,6 +1,6 @@
 # Version 0.0 (WIP)
 
-All pointers represent byte-offsets relative to the beginning of the file.
+All pointers are u32s and represent byte-offsets relative to the beginning of the file.
 
 Pointers *must not* be 0, unless they are marked with (opt), in which case 0 represents a null value.
 
