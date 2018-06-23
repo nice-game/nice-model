@@ -19,8 +19,7 @@ Parsers *must* support at least BC1 and BC2 textures, and *may* support any addi
 | vertex_count | u32 |
 | positions_offset | *[Position; vertex_count] |
 | normals_offset | (opt) *[Normal; vertex_count] |
-| texcoords1_offset | (opt) *[TexCoord; vertex_count] |
-| texcoords2_offset | (opt) *[TexCoord; vertex_count] |
+| texcoords_main_offset | (opt) *[TexCoord; vertex_count] |
 | texcoords_lightmap_offset | (opt) *[TexCoord; vertex_count] |
 | index_count | u32 |
 | indices_offset | *[u32; index_count] |
