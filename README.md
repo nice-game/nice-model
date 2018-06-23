@@ -70,8 +70,10 @@ Normal values *should* be normalized. That is, `sqrt(normal[0]^2 * normal[1]^2 *
 | Name | Type |
 | - | - |
 | index_count | u32 |
-| texture1 | (opt) *Path |
-| texture2 | (opt) *Path |
+| texture1_len | u16 |
+| texture1_path | (opt) *Path |
+| texture2_len | u16 |
+| texture2_path | (opt) *Path |
 | light_penetration | u8 |
 | subsurface_scattering | u8 |
 | emissive_brightness | u16 |
@@ -81,11 +83,11 @@ Normal values *should* be normalized. That is, `sqrt(normal[0]^2 * normal[1]^2 *
 
 * `texture1` is interpreted as a texture where the first 3 channels define an RGB color value, and the 4th channel is a flag to enable or disable emissiveness.
 
-  For the sake of performance, this *should* reference a BC1 file.
+  For the sake of performance, this *should* reference a BCn file. It's likely best to use BC1.
 
 * `texture2` is interpreted as a texture where the first 2 channels represent a tangent-space normal encoded as `normal.xy / normal.z`, the 3rd channel represents a "polish" factor, and the 4th channel represents a "metallic" factor.
 
-  For the sake of performance, this *should* reference a BC3 file in most cases. In some cases - primarily with flat normal maps - BC1 may be more efficient.
+  For the sake of performance, this *should* reference a BCn file. It's likely best to use BC2 (for images with sharp edges) or BC3 (for images with smooth gradients).
 
 * `light_penetration` represents the percent of light remaining after travelling through one unit of material, as if the object absorbed the rest of the light. 0 represents an opaque object, and 255 represents maximum transparency. Note that even with maximum transparency, an object may just become blurry instead of invisible, as subsurface scattering may still cause some light to be reflected.
 
@@ -99,9 +101,8 @@ Normal values *should* be normalized. That is, `sqrt(normal[0]^2 * normal[1]^2 *
 A path *must* be a valid path on any system where the file will be loaded. It *should* be cross-platform compatible, and relative instead of absolute.
 
 ## String
-| Name | Type |
-| - | - |
-| length | u16 |
-| bytes | [u8; length] |
+| Type |
+| - |
+| [u8] |
 
-`bytes` *must* be UTF-8 encoded, and does not have a null terminator. However, null characters are acceptable and treated as part of the string.
+A string be UTF-8 encoded, and does not have a null terminator. However, null characters are acceptable and treated as part of the string.
